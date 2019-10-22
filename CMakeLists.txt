@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.14)
+project(tp2InstanceGenerator)
+
+set(CMAKE_CXX_STANDARD 14)
+
+add_executable(tp2InstanceGenerator main.cpp experimentoGenerico.cpp experimentoGenerico.h instanciasFavorablesDesfavorables.cpp instanciasFavorablesDesfavorables.h)
