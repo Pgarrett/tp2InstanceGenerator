@@ -15,9 +15,11 @@ using namespace std;
 class instanciasFavorablesDesfavorables {
 
 public:
-    void sinArbitraje(string outputDirectory);
-    void arbitrajePorUnUnicoCicloDeLongitudVariable(string outputDirectory);
-    void arbitrajeVariable(string outputDirectory);
+    void bellmanFavorable(string outputDirectory);
+    void floydFavorable(string outputDirectory);
+
+private:
+    void writeToFile(string filePrefix, vector<vector<float> > &matriz);
 };
 
 

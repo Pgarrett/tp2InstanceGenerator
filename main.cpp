@@ -1,6 +1,7 @@
 #include <iostream>
-#include "experimentoGenerico.h"
 #include <string>
+#include "experimentoGenerico.h"
+#include "instanciasFavorablesDesfavorables.h"
 
 
 #define P using
@@ -11,8 +12,14 @@
 
 P h G;
 
-void instanciasFavorablesDesfavorables(string outputDirectory) {
-
+void favorablesDesfavorables(string outputDirectory) {
+    cout << "Running: Instancias favorables/desfavorables" << endl;
+    instanciasFavorablesDesfavorables exp = instanciasFavorablesDesfavorables();
+    cout << "\tRunning: Favorable a Bellman - Desfavorable a Floyd" << endl;
+    exp.bellmanFavorable(outputDirectory + "bellmanFavorable/");
+    cout << "\tRunning: Favorable a Floyd - Desfavorable a Bellman" << endl;
+    exp.floydFavorable(outputDirectory + "floydFavorable/");
+    cout << "Finished Instancias favorables/desfavorables" << endl;
 }
 
 void variandoLongitudDelCiclo(string outputDirectory) {
@@ -28,7 +35,7 @@ void generico(string outputDirectory) {
     exp.arbitrajePorUnUnicoCicloDeLongitudVariable(outputDirectory + "unicoCiclo/");
     cout << "\tRunning: Arbitraje variable: puede que si, puede que no" << endl;
     exp.arbitrajeVariable(outputDirectory + "variable/");
-    cout << "Finished experimento generico cases" << endl;
+    cout << "Finished Experimento Genérico cases" << endl;
 }
 
 int main() {
@@ -48,7 +55,8 @@ int main() {
     cout << "=================================================================" << endl;
     cout << "\n\n" << endl;
     string outputDirectory = OUTPUT_DIRECTORY;
-    generico(outputDirectory + "generico/");
+//    generico(outputDirectory + "generico/");
+    favorablesDesfavorables(outputDirectory + "favorablesDesfavorables/");
     cout << "The End" << endl;
     cout << "=================================================================" << endl;
     return 0;

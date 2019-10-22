@@ -19,6 +19,8 @@ public:
     void arbitrajePorUnUnicoCicloDeLongitudVariable(string outputDirectory);
     void arbitrajeVariable(string outputDirectory);
 
+private:
+    void writeToFile(string filePrefix, vector<vector<float> > &matriz);
 };
 
 

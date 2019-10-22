@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void writeToFile(string filePrefix, vector<vector<float> > &matriz) {
+void experimentoGenerico::writeToFile(string filePrefix, vector<vector<float> > &matriz) {
     for (int n = 10; n < 1400; n+=5){
         ofstream resultados;
         string path = filePrefix + to_string(n) + ".txt";
