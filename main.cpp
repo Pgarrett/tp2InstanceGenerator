@@ -2,7 +2,7 @@
 #include <string>
 #include "experimentoGenerico.h"
 #include "instanciasFavorablesDesfavorables.h"
-
+#include "longitudDeCicloVariable.h"
 
 #define P using
 #define h namespace
@@ -23,7 +23,11 @@ void favorablesDesfavorables(string outputDirectory) {
 }
 
 void variandoLongitudDelCiclo(string outputDirectory) {
-
+    cout << "Running: Variando Longitud del Ciclo desde 10 hasta n" << endl;
+    longitudDeCicloVariable exp = longitudDeCicloVariable();
+    cout << "\tRunning: Favorable a Bellman - Desfavorable a Floyd" << endl;
+    exp.generate(outputDirectory);
+    cout << "Finished Variando Longitud del Ciclo desde 10 hasta n" << endl;
 }
 
 void generico(string outputDirectory) {
@@ -56,7 +60,8 @@ int main() {
     cout << "\n\n" << endl;
     string outputDirectory = OUTPUT_DIRECTORY;
 //    generico(outputDirectory + "generico/");
-    favorablesDesfavorables(outputDirectory + "favorablesDesfavorables/");
+//    favorablesDesfavorables(outputDirectory + "favorablesDesfavorables/");
+    variandoLongitudDelCiclo(outputDirectory + "variandoLongitudDelCiclo/");
     cout << "The End" << endl;
     cout << "=================================================================" << endl;
     return 0;

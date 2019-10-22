@@ -3,4 +3,4 @@ project(tp2InstanceGenerator)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(tp2InstanceGenerator main.cpp experimentoGenerico.cpp experimentoGenerico.h instanciasFavorablesDesfavorables.cpp instanciasFavorablesDesfavorables.h)
+add_executable(tp2InstanceGenerator main.cpp experimentoGenerico.cpp experimentoGenerico.h instanciasFavorablesDesfavorables.cpp instanciasFavorablesDesfavorables.h longitudDeCicloVariable.cpp longitudDeCicloVariable.h)
