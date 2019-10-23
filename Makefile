@@ -1,6 +1,6 @@
 CFLAGS = -Wall -std=c++11 -Wextra -Wno-unused -O1
 
-OBJS = experimentoGenerico.cpp instanciasFavorablesDesfavorables.cpp
+OBJS = experimentoGenerico.cpp instanciasFavorablesDesfavorables.cpp longitudDeCicloVariable.cpp
 
 .PHONY: all build clean 
 
