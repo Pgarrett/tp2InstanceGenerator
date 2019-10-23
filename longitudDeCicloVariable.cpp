@@ -9,7 +9,7 @@ void longitudDeCicloVariable::generate(string outputDirectory){
     cantNodos.push_back(800);
     cantNodos.push_back(1000);
     vector<int> longCiclos = vector<int>();
-    for (int i = 10; i < 1000; i++ ) {
+    for (int i = 10; i < 1001; i++ ) {
         longCiclos.push_back(i);
     }
     for (unsigned int i = 0; i < longCiclos.size(); i++){
@@ -18,7 +18,8 @@ void longitudDeCicloVariable::generate(string outputDirectory){
                 vector<vector<float> > matriz(cantNodos[j], vector<float>(cantNodos[j], 0));
                 /* Prepara instancias para la experimentacion */
                 int n = cantNodos[j];
-                int longitud = longCiclos[i];
+                int longCiclo = longCiclos[i];
+                int longitud = longCiclo;
                 int hasta = cantNodos[j];
                 float casiCero = 0.1;
                 /* Inicializa la matriz con un valor muy cercano a cero */
@@ -26,27 +27,27 @@ void longitudDeCicloVariable::generate(string outputDirectory){
                     for (int j = 0; j < n; j++)
                         matriz[i][j] = casiCero;
                 /* Pone la diagonal con peso = 1 */
-                for (int i = 0; i < n; i++) matriz[i][i] = 1;
+                for (int k = 0; k < n; k++) matriz[k][k] = 1;
                 /* Crea un ciclo con ganancia de tamaño longitud de indices random */
                 vector<int> ciclo;
-                int i,j,inicial;
+                int l,m,inicial;
                 inicial = rand() % (hasta);
-                i = inicial;
+                l = inicial;
                 longitud-=2;
                 ciclo.push_back(inicial);
                 do{
-                    j = rand() % (hasta);
-                    while (find(ciclo.begin(), ciclo.end(), j) != ciclo.end()){
-                        j = rand() % (hasta);
+                    m = rand() % (hasta);
+                    while (find(ciclo.begin(), ciclo.end(), m) != ciclo.end()){
+                        m = rand() % (hasta);
                     }
-                    matriz[i][j] = 1.00000000001;
-                    i = j;
-                    ciclo.push_back(j);
+                    matriz[l][m] = 1.00000000001;
+                    l = m;
+                    ciclo.push_back(m);
                     longitud--;
                 } while (longitud > 0);
-                matriz[j][inicial] = 2.0;
+                matriz[m][inicial] = 2.0;
                 ofstream resultados;
-                string path = outputDirectory + to_string(n) + "/" + to_string(n) + "_" + to_string(longitud) + ".txt";
+                string path = outputDirectory + to_string(n) + "/" + to_string(n) + "_" + to_string(longCiclo) + ".txt";
                 resultados.open(path);
                 resultados << n << endl;
                 for (int f = 0; f < n; f++){
@@ -60,8 +61,8 @@ void longitudDeCicloVariable::generate(string outputDirectory){
                     }
                 }
                 resultados.close();
-                if (n % 200 == 0) {
-                    cout << "\t\t\tWrote " << n << " out of 1400 cases." << endl;
+                if (longCiclo % 50 == 0 && n == 1000) {
+                    cout << "\t\t\tWrote " << longCiclo << " out of 1000 cases." << endl;
                 }
             }
         }
